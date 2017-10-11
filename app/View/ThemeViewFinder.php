@@ -1,0 +1,19 @@
+<?php
+namespace App\View;
+
+use Illuminate\View\FileViewFinder;
+
+class ThemeViewFinder extends FileViewFinder{
+	protected $activeTheme;
+
+	protected $basePath;
+
+	function setBasePath($path){
+		$this->basePath = $path;
+	}
+
+	function setActiveTheme($theme){
+		$this->activeTheme = $theme;
+		array_unshift($this->paths, $this->basePath.'/'.$theme.'/views');
+	}
+}
