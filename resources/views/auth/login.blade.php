@@ -20,7 +20,7 @@
 
    <a href="#" class="small">Forgot Password</a>
    {!! Form::open !!} --}}
-   <form method="post" action="">
+   <form method="post" action="{{route('login')}}">
       {{ csrf_field() }}
    <div class="form-group">
          <label for='email'>Email:</label>
@@ -31,6 +31,6 @@
          <input type="password" name="password" class="form-control">
    </div>
    <input type="submit" name="login" class="btn btn-primary" required="true">
-   <a href="#" class="small">Forgot Password</a>
+   <a href="{{route('password.reset')}}" class="small">Forgot Password</a>
    </form>
 @endsection 

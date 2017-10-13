@@ -1,0 +1,1 @@
+Please follow the link to reset your password: {{route('password.resets', $token)}}
