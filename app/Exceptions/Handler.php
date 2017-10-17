@@ -44,6 +44,11 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if($exception instanceof ModelNotFoundException){
+            return redirect()->back()->withErrors([
+                'error' => 'Could not find a matching Record'
+            ]);
+        }
         return parent::render($request, $exception);
     }
 

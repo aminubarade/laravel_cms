@@ -1,11 +1,4 @@
 <?php
-/*
-Route::group(['middleware' => ['web']], function() {
-	Route::auth();
-	Route::get('password', '\App\Http\Controllers\Auth\resetPasswordController@resetPassword');
-    Route::get('backend/dashboard', ['as' => 'backend.dashboard', 'uses' => 'Backend\DashboardController@index']); 
- });*/
-
 Route::group(['middleware' => ['web']], function() {
 	Route::auth();
 	Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
@@ -20,7 +13,8 @@ Route::group(['middleware' => ['web']], function() {
  });
 
 Route::get('backend/users/{users}/confirm',['as' => 'backend.users.confirm', 'uses' => 'Backend\UsersController@confirm']);
-Route::resource('backend/users', 'Backend\UsersController');
+Route::resource('backend/users', 'Backend\UsersController',['except' =>['show']]);
+
 
 
 
