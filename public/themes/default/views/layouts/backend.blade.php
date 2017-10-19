@@ -13,7 +13,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="#">Dashboard</a></li>
                     <li><a href="{{route('users.index')}}">Users</a></li>
-                    <li><a href="#">Pages</a></li>
+                    <li><a href="{{route('pages.index')}}">Pages</a></li>
                     <li><a href="#">Posts</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">

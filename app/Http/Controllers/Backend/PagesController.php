@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Page;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Requests;
+
 
 class PagesController extends Controller
 {
@@ -12,9 +14,18 @@ class PagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $pages;
+
+    public function __construct(Page $pages){
+        $this->pages = $pages;
+        parent::__construct();
+    }
+
     public function index()
     {
         //
+        $pages = $this->pages->all();
+        return view('backend.pages.index', compact('pages'));
     }
 
     /**
@@ -78,6 +89,9 @@ class PagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function confirm () {
+        //
+    }
     public function destroy($id)
     {
         //

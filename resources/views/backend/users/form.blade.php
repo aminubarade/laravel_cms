@@ -12,7 +12,7 @@
 
 	<form method="{{$user->exists ? 'put' : 'post'}}"  action="{{$user->exists ? route('users.update',$user->id) : route('users.store')}}">
       {{ csrf_field() }}
-      {{ method_field('PUT') }}
+      {{ method_field('PUT')}}
    		<div class="form-group">
          <label for='name'>Name:</label>
          <input type="text" name="name" class="form-control" {{-- required="true" --}}>
