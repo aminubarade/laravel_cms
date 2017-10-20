@@ -26,6 +26,7 @@ class PagesController extends Controller
         //
         $pages = $this->pages->all();
         return view('backend.pages.index', compact('pages'));
+
     }
 
     /**
@@ -33,9 +34,10 @@ class PagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Page $page)
     {
         //
+        return view('backend.pages.form', compact('page'));
     }
 
     /**

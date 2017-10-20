@@ -3,6 +3,7 @@
 @section('title', 'Pages')
 
 @section('content')
+	<a href="{{route('pages.create')}}" class="btn btn-primary">Create New Page</a>
 	<table class="table table-hover">
     	<thead>
     		<tr>
@@ -26,8 +27,8 @@
     					<td>
     						<a href="{{route('pages.edit',$page->id)}}">{{$page->title}}</a>
     					</td>
-    					<td>{{$page->uri}}</td>
-    					<td>{{$page->name}}</td>
+    					<td><a href="{{url($page->uri)}}">{{'/'.ltrim($page->uri, '/')}}</a></td>
+    					<td>{{$page->name or 'None'}}</td>
     					<td>
     						<a href="{{route('pages.edit',$page->id)}}"><span class="glyphicon glyphicon-edit"></a>
     					</td>

@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="{{ theme('css/backend.css')}}">
+    <script type="text/javascript" src="{{theme('js/simplemde.js')}}"></script>
 	<title>Admin</title>
 </head>
 <body>
