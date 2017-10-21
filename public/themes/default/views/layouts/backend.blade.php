@@ -18,7 +18,7 @@
                     <li><a href="#">Posts</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><span class="navbar-text">Hello, Ameen</span></li>
+                    <li><span class="navbar-text">Hello</span></li>
                     <li><a href="{{route('logout')}}">Logout</a></li>
                 </ul>
             </div>

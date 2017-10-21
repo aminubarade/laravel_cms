@@ -46,9 +46,11 @@ class PagesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Requests\StorePageRequest $request)
     {
         //
+        $this->pages->create($request->only('title','uri','name','content'));
+        return redirect(route('pages.index'))->with('status', 'Page successfully Created');
     }
 
     /**
@@ -70,7 +72,8 @@ class PagesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $page = $this->pages->findOrFail($id); 
+        return view('backend.pages.form',compact('page'));
     }
 
     /**
@@ -80,9 +83,13 @@ class PagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Requests\StorePageRequest $request, $id)
     {
-        //
+        $page = $this->pages->findOrFail($id); 
+        $page->fill($request->only('title','uri','name','content'))->save();
+
+        return redirect(route('pages.edit',$page->id))->with('status', 'Page successfully updated');
+
     }
 
     /**
@@ -91,11 +98,15 @@ class PagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function confirm () {
-        //
+    public function confirm ($id) {
+        $page = $this->pages->findOrFail($id);
+        return view('backend.pages.confirm', compact('page'));
     }
     public function destroy($id)
     {
-        //
+        $page = $this->pages->findOrFail($id);
+        $page->delete();
+        return redirect(route('pages.index'))->with('status', 'Page deleted');
+
     }
 }

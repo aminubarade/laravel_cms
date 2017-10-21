@@ -3,7 +3,7 @@
 @section('title', 'Pages')
 
 @section('content')
-	<form method="{{$page->exists ? 'put' : 'post'}}"  action="{{$page->exists ? route('page.update',$user->id) : route('users.store')}}">
+	<form method="{{$page->exists ? 'put' : 'post'}}"  action="{{$page->exists ? route('pages.update',$page->id) : route('pages.store')}}">
       {{ csrf_field() }}
       {{-- {{ method_field('PUT')}} --}}
    		<div class="form-group">
@@ -25,7 +25,7 @@
          <label for='content'>Content:</label>
          <textarea name="content" class="form-control"></textarea>
    		</div>
-   		<input type="submit" value="{{$page->exists ? 'Save Page':'Create New Page'}}" class="btn btn-primary">
+   		<input type="submit" value="{{$page->exists ? 'Save Changes':'Create New Page'}}" class="btn btn-primary">
 	</form>
 	<script type="text/javascript">
 			new SimpleMDE().render();
