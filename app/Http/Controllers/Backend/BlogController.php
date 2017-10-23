@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Post;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Requests;
+
 
 class BlogController extends Controller
 {
@@ -12,9 +14,19 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $posts;
+
+    public function __construct(Post $posts) {
+        $this->posts = $posts;
+
+        parent::__construct();
+
+    }
+
     public function index()
     {
-        //
+        $posts = $this->posts->with('author')->orderby('published_at', 'desc')->paginate(10);
+        return view('backend.blog.index', compact('posts'));
     }
 
     /**
@@ -22,9 +34,9 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Post $post)
     {
-        //
+        return view('backend.blog.form', compact('post'));
     }
 
     /**
@@ -78,6 +90,9 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function confirm(){
+
+    }
     public function destroy($id)
     {
         //

@@ -46,7 +46,7 @@ class UsersController extends Controller
 
     }
 
-    public function update(Requests\UpdateUserRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $user = $this->users->findOrFail($id);
 

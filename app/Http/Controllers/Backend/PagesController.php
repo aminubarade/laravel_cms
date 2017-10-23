@@ -61,7 +61,7 @@ class PagesController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -83,13 +83,11 @@ class PagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Requests\StorePageRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $page = $this->pages->findOrFail($id); 
         $page->fill($request->only('title','uri','name','content'))->save();
-
         return redirect(route('pages.edit',$page->id))->with('status', 'Page successfully updated');
-
     }
 
     /**
@@ -102,6 +100,7 @@ class PagesController extends Controller
         $page = $this->pages->findOrFail($id);
         return view('backend.pages.confirm', compact('page'));
     }
+
     public function destroy($id)
     {
         $page = $this->pages->findOrFail($id);

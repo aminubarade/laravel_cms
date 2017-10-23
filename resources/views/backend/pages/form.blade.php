@@ -1,10 +1,11 @@
 @extends('layouts.backend')
 
-@section('title', 'Pages')
+@section('title', $page->exists ?'Editing '.$page->title : 'Create New Page')
 
 @section('content')
-	<form method="{{$page->exists ? 'put' : 'post'}}"  action="{{$page->exists ? route('pages.update',$page->id) : route('pages.store')}}">
+	<form method="POST"  action="{{$page->exists ? route('pages.update',$page->id) : route('pages.store')}}">
       {{ csrf_field() }}
+      <input type="hidden" name="_method" value="{{$page->exists ? 'PUT' : 'POST' }}">
       {{-- {{ method_field('PUT')}} --}}
    		<div class="form-group">
          <label for='title'>Title:</label>
