@@ -3,9 +3,9 @@
 @section('title',$post->exists ? 'Editing' : 'Add Post')
 
 @section('content')
-	<form method="{{$post->exists ? 'put' : 'post'}}"  action="{{$post->exists ? route('blog.update',$post->id) : route('blog.store')}}">
+	<form method="POST"  action="{{$post->exists ? route('blog.update',$post->id) : route('blog.store')}}">
       {{ csrf_field() }}
-      {{-- {{ method_field('PUT')}} --}}
+       <input type="hidden" name="_method" value="{{$post->exists ? 'PUT' : 'POST' }}">
    		<div class="form-group">
          <label for='title'>Title:</label>
          <input type="text" name="title" class="form-control" {{-- required="true" --}}>
@@ -17,11 +17,15 @@
          	The slug is used to generate Links to a post.
          </p>
    		</div>
-   		<div class="form-group">
-         <label for='published'>Published At:</label>
-         <input type="text" name="published" class="form-control" {{-- required="true" --}}>
+   		<div class="form-group row">
+         <div class="col-md-12">
+         <label for='published_at'>Published At:</label>
+         </div>
+         <div class="col-md-4">
+         <input type="text" name="published_at" class="form-control" {{-- required="true" --}}>
    		</div>
-   		<div class="form-group">
+         </div>
+   		<div class="form-group excerpt">
          <label for='excerpt'>Excerpt:</label>
          <textarea name="excerpt" class="form-control"></textarea>
    		</div>
@@ -39,6 +43,23 @@
 			new SimpleMDE({
 				element: document.getElementsByName('excerpt')[0]
 			}).render();
+
+         $('input[name=published_at]').datetimepicker({
+            allowInputToggle: true,
+            format: 'YYYY-MM-DD HH:mm:ss',
+            showClear: true,
+            defaultDate: '{{ old('published_at', $post->published_at) }}'
+        });
+
+         $('input[name=title]').on('blur', function () {
+            var slugElement = $('input[name=slug]');
+
+            if (slugElement.val()) {
+                return;
+            }
+
+            slugElement.val(this.value.toLowerCase().replace(/[^a-z0-9-]+/g, '-').replace(/^-+|-+$/g, ''));
+        });
 	</script>
 
 @stop

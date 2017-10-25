@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="{{ theme('css/backend.css')}}">
-    <script type="text/javascript" src="{{theme('js/simplemde.js')}}"></script>
+    <script type="text/javascript" src="{{theme('js/all.js')}}"></script>
 	<title>Admin</title>
 </head>
 <body>

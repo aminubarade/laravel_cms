@@ -1,4 +1,4 @@
-This is a simple laravel app I'm building.
+This is a simple laravel app I built.
 
 <h5>Present features:</h5>
 <ol>
@@ -6,10 +6,6 @@ This is a simple laravel app I'm building.
   <li>logout</li>
   <li>add, edit and delete user</li>
   <li>create, edit and delete page</li>
-  <li>create post</li>
+  <li>create edit and delete post<</li>
+  <li>reset password</li>
 </ol>
-
-<h5>coming soon:</h5>
-<ol>
-   <li>reset password</li>
-    <li>edit and delete post</li>
