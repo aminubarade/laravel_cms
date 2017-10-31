@@ -24,7 +24,7 @@ Route::get('backend/blog/{blog}/confirm', ['as' => 'backend.blog.confirm', 'uses
 Route::resource('backend/blog', 'Backend\BlogController');
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('index');
 });
 
     

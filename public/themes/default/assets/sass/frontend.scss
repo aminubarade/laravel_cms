@@ -1,0 +1,25 @@
+@import "bootstrap";
+
+a.navbar-brand {
+	padding: 9px 15px;
+
+	img{
+		height: 32px;
+	}
+}
+
+.dropdown:hover > .dropdown-menu{
+	display:block;
+} 
+
+#home{
+	background: url(../images/header.jpg);
+	display: table;
+	height: 500px;
+	position: relative;
+	width: 100%;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
